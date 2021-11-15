@@ -1,0 +1,15 @@
+version: "3.8"
+networks:
+  time-breaker:
+    driver: "bridge"
+services:
+  php-fpm:
+    build:
+      context: .
+      dockerfile: Dockerfile
+      target: dev
+    restart: on-failure
+    command: sh -c 'php-fpm'
+    networks:
+      - time-breaker
+    container_name: php-fpm

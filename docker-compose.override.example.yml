@@ -1,0 +1,8 @@
+version: "3.8"
+services:
+  php-fpm:
+    volumes:
+      - ".:/time-breaker:consistent"
+    working_dir: "/time-breaker"
+    environment:
+      PHP_IDE_CONFIG: "serverName=docker-server"
