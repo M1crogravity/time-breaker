@@ -12,4 +12,10 @@ services:
     command: sh -c 'php-fpm'
     networks:
       - time-breaker
-    container_name: php-fpm
+    container_name: time-breaker_php-fpm
+  postgres:
+    image: postgres:14-alpine
+    restart: on-failure
+    networks:
+      - time-breaker
+    container_name: time-breaker_postgres

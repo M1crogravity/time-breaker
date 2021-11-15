@@ -12,8 +12,7 @@ use Illuminate\Support\Facades\Route;
 
 final class RouteServiceProvider extends ServiceProvider
 {
-    public const HOME = '/home';
-    // protected $namespace = 'App\\Http\\Controllers';
+    protected $namespace = 'App\Http\Actions';
 
     public function boot(): void
     {
@@ -22,12 +21,8 @@ final class RouteServiceProvider extends ServiceProvider
         $this->routes(function () {
             Route::prefix('api')
                 ->middleware('api')
-                ->namespace($this->namespace)
+                ->namespace("{$this->namespace}\Api")
                 ->group(base_path('routes/api.php'));
-
-            Route::middleware('web')
-                ->namespace($this->namespace)
-                ->group(base_path('routes/web.php'));
         });
     }
 
