@@ -10,6 +10,8 @@ services:
       target: dev
     restart: on-failure
     command: sh -c 'php-fpm'
+    depends_on:
+      - postgres
     networks:
       - time-breaker
     container_name: time-breaker_php-fpm
