@@ -1,0 +1,23 @@
+version: "3.8"
+volumes:
+  postgres:
+services:
+  php-fpm:
+    build:
+      context: .
+      dockerfile: Dockerfile
+      target: base
+    volumes:
+      - ".:/time-breaker:consistent"
+    working_dir: "/time-breaker"
+    environment:
+      PHP_IDE_CONFIG: "serverName=docker-server"
+  postgres:
+    ports:
+      - "5432:5432"
+    volumes:
+      - "postgres:/var/lib/postgresql/data"
+    environment:
+      - POSTGRES_DB=time_breaker
+      - POSTGRES_USER=chronos
+      - POSTGRES_PASSWORD=secret
