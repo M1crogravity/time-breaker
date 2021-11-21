@@ -1,4 +1,4 @@
-APP=docker compose exec php-fpm
+APP=docker-compose exec php-fpm
 APP_TEST=docker-compose exec -T php-fpm
 COMPOSER=docker run --rm --tty --volume $${PWD}:/app --volume $${COMPOSER_HOME:-$$HOME/.composer}:/tmp composer
 
